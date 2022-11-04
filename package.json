@@ -1,0 +1,23 @@
+{
+  "name": "@tarui/paginact",
+  "version": "1.0.0",
+  "description": "A React Hook for Pagination",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaselParvejABC/paginact.git"
+  },
+  "author": "Muhammad Rasel Parvej",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RaselParvejABC/paginact/issues"
+  },
+  "homepage": "https://github.com/RaselParvejABC/paginact#readme",
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  }
+}

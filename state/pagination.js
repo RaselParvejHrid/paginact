@@ -99,7 +99,7 @@ export function calculateDependentStateVariables(state) {
     state.currentPageIndex === state.firstPageIndex
       ? null
       : state.currentPageIndex - 1;
-  state.lastPageIndex =
+  state.nextPageIndex =
     state.currentPageIndex === state.lastPageIndex
       ? null
       : state.currentPageIndex + 1;

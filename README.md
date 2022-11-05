@@ -40,7 +40,7 @@ function App() {
 
 ## API Reference
 
-#### usePagination()
+### usePagination()
 
 ```javascript
   usePagination(
@@ -60,7 +60,7 @@ This hook returns an object. In the [Usage](#usage) section above is the compreh
 
 
 
-#### The case when `totalNumberOfItems` is `0`
+### The case when `totalNumberOfItems` is `0`
 Either through `initialTotalNumberOfItems` parameter in `usePagination()` hook, or through `setTotalNumberOfItems`, whenever `totalNumberOfItems` is `0`, here is what we get—
 
 ```javascript
@@ -79,7 +79,16 @@ Either through `initialTotalNumberOfItems` parameter in `usePagination()` hook, 
 }
 ```
 
+###  Keys of the Object by `usePagination()` hook
 
+| Key| Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `totalNumberOfItems` | `number` |  A non-negative integer|
+| `setTotalNumberOfItems` | `function` |  Takes a single non-negative integer `number` type argument as the new value of `totalNumberOfItems`.|
+| `itemsPerPage` | `number` |  A non-negative integer. `0` only when `totalNumberOfItems` is `0`.|
+| `setItemsPerPage` | `function` |  Takes a single positive integer `number` type argument as the new value of `itemsPerPage`.|
+| `currentPageIndex` | `number` |  A positive integer, or `null` when `totalNumberOfItems` is `0`.|
+| `setCurrentPageIndex` | `function` |  Takes a single positive integer `number` type argument as the new value of `currentPageIndex`.|
 
 
 ## FAQ

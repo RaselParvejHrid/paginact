@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import {
   paginationReducer,
   defaultInitialState,
@@ -29,10 +29,13 @@ export default function usePagination(
           initialTotalNumberOfItems
       ) {
         initialState.currentPageIndex = 1;
+        console.log("Again and Again");
       }
     }
     calculateDependentStateVariables(initialState);
+  }
 
+  useEffect(() => {
     console.info(
       "@tarui/paginact",
       "Initialializing Pagination State",
@@ -43,7 +46,7 @@ export default function usePagination(
       "currentPageIndex: ",
       initialState.currentPageIndex
     );
-  }
+  }, [totalNumberOfItems, itemsPerPage]);
 
   const [pagination, dispatch] = useReducer(paginationReducer, initialState);
 

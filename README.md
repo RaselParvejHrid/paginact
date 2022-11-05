@@ -16,7 +16,7 @@ yarn add paginact
 ```javascript
 import usePagination from "paginact";
 
-function App() {
+
   const {
     totalNumberOfItems,
     itemsPerPage,
@@ -35,7 +35,7 @@ function App() {
   } = usePagination(97, 10, 1);
 // Pagination for 97 items, and 10 items per page with current page number 1.
 ```
-**Note**:  Both Page Indices and Item Indices here start from 1, not 0.
+**Note**:  Both `Page Indices` and `Item Indices` here `start from  1`, not 0.
 
 
 ## API Reference
@@ -97,6 +97,9 @@ Either through `initialTotalNumberOfItems` parameter in `usePagination()` hook, 
 | `endItemIndexOnCurrentPage` | `number` |  A positive integer,  or `null` when `totalNumberOfItems` is `0`.|
 | `previousPageIndex` | `number` |  A positive integer, or `null` there is no previous page.|
 | `nextPageIndex` | `number` |  A positive integer, or `null` there is no next page.|
+
+
+**Note**:  Both `Page Indices` and `Item Indices` here `start from  1`, not 0.
 
 
 ## FAQ

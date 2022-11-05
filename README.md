@@ -84,11 +84,19 @@ Either through `initialTotalNumberOfItems` parameter in `usePagination()` hook, 
 | Key| Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `totalNumberOfItems` | `number` |  A non-negative integer|
-| `setTotalNumberOfItems` | `function` |  Takes a single non-negative integer `number` type argument as the new value of `totalNumberOfItems`.|
+| `setTotalNumberOfItems` | `function` |  Takes a single non-negative integer `number` type argument as the new value of `totalNumberOfItems`. Throws error on invalid argument.|
 | `itemsPerPage` | `number` |  A non-negative integer. `0` only when `totalNumberOfItems` is `0`.|
-| `setItemsPerPage` | `function` |  Takes a single positive integer `number` type argument as the new value of `itemsPerPage`.|
-| `currentPageIndex` | `number` |  A positive integer, or `null` when `totalNumberOfItems` is `0`.|
-| `setCurrentPageIndex` | `function` |  Takes a single positive integer `number` type argument as the new value of `currentPageIndex`.|
+| `setItemsPerPage` | `function` |  Takes a single positive integer `number` type argument as the new value of `itemsPerPage`. Throws error on invalid argument.|
+| `currentPageIndex` | `number` |  A positive integer, or `null` only when `totalNumberOfItems` is `0`.|
+| `setCurrentPageIndex` | `function` |  Takes a single positive integer `number` type argument as the new value of `currentPageIndex`. The argument must not be greater than `numberOfPages` described below. Throws error on invalid argument.|
+| `numberOfPages` | `number` |  A non-negative integer, or `0` only when `totalNumberOfItems` is `0`.|
+| `firstPageIndex` | `number` |  `1`, or `null` only when `totalNumberOfItems` is `0`.|
+| `lastPageIndex` | `number` |  Equal to `numberOfPages`,  or `null` only when `totalNumberOfItems` is `0`.|
+| `offset` | `number` |  A non-negative integer. This is the total number of items under the pages before the current page (`currentPageIndex`).|
+| `startItemIndexOnCurrentPage` | `number` |  A positive integer,  or `null` when `totalNumberOfItems` is `0`.|
+| `endItemIndexOnCurrentPage` | `number` |  A positive integer,  or `null` when `totalNumberOfItems` is `0`.|
+| `previousPageIndex` | `number` |  A positive integer, or `null` there is no previous page.|
+| `nextPageIndex` | `number` |  A positive integer, or `null` there is no next page.|
 
 
 ## FAQ

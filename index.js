@@ -48,11 +48,11 @@ export default function usePagination(
       "@tarui/paginact",
       "Initialializing Pagination State",
       "totalNumberOfItems: ",
-      initialState.totalNumberOfItems,
+      pagination.totalNumberOfItems,
       "itemsPerPage: ",
-      initialState.itemsPerPage,
+      pagination.itemsPerPage,
       "currentPageIndex: ",
-      initialState.currentPageIndex
+      pagination.currentPageIndex
     );
   }, [pagination.totalNumberOfItems, pagination.itemsPerPage]);
 

@@ -4,7 +4,7 @@ import {
   defaultInitialState,
   calculateDependentStateVariables,
   actionCreators,
-} from "./state/pagination";
+} from "./state/pagination.js";
 
 export default function usePagination(
   initialTotalNumberOfItems = 0,

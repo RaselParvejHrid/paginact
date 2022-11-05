@@ -36,7 +36,7 @@ export default function usePagination(
           (initialCurrentPageIndex - 1) * initialItemsPerPage <
             initialTotalNumberOfItems
         ) {
-          initialPayload.currentPageIndex = 1;
+          initialPayload.currentPageIndex = initialCurrentPageIndex;
         }
       }
       dispatch(actionCreators.initialize(initialPayload));
@@ -45,8 +45,8 @@ export default function usePagination(
 
   useEffect(() => {
     console.info(
-      "@tarui/paginact",
-      "Initialializing Pagination State",
+      "paginact",
+      "New Pagination State",
       "totalNumberOfItems: ",
       pagination.totalNumberOfItems,
       "itemsPerPage: ",

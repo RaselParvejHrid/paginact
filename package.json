@@ -1,5 +1,5 @@
 {
-  "name": "@tarui/paginact",
+  "name": "paginact",
   "version": "1.0.0",
   "description": "A React Hook for Pagination",
   "type": "module",

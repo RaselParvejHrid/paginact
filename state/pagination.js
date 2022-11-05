@@ -6,9 +6,6 @@ const actionTypes = {
 
 export const actionCreators = {
   totalNumberOfItems: (total) => {
-    if (total < 0 || !Number.isSafeInteger(total)) {
-      throw new Error("totalNumberOfItems must be a non-negative integer.");
-    }
     return {
       type: actionTypes.TOTAL_NUMBER_OF_ITEMS,
       payload: {
@@ -17,9 +14,6 @@ export const actionCreators = {
     };
   },
   itemsPerPage: (itemsPerPage) => {
-    if (itemsPerPage <= 0 || !Number.isSafeInteger(itemsPerPage)) {
-      throw new Error("itemsPerPage must be a positive integer.");
-    }
     return {
       type: actionTypes.ITEMS_PER_PAGE,
       payload: {
@@ -28,9 +22,6 @@ export const actionCreators = {
     };
   },
   currentPageIndex: (currentPageIndex) => {
-    if (currentPageIndex <= 0 || !Number.isSafeInteger(currentPageIndex)) {
-      throw new Error("currentPageIndex must be a positive integer.");
-    }
     return {
       type: actionTypes.CURRENT_PAGE_INDEX,
       payload: {
@@ -55,16 +46,27 @@ export const defaultInitialState = {
 };
 
 export function paginationReducer(state, action) {
-  switch (action.type) {
+  const { type, payload } = action;
+  const newState = { ...state };
+  switch (type) {
     case actionTypes.TOTAL_NUMBER_OF_ITEMS:
-      return { ...state, items: [...state.items, action.payload] };
+      if (payload.totalNumberOfItems === 0) {
+        return defaultInitialState;
+      }
+      newState.totalNumberOfItems = payload.totalNumberOfItems;
+    //Intentionally omitting break statement
     case actionTypes.ITEMS_PER_PAGE:
-      return {
-        ...state,
-        items: state.items.filter((item) => item.id !== action.payload),
-      };
+      if (type === actionTypes.ITEMS_PER_PAGE) {
+        newState.itemsPerPage = payload.itemsPerPage;
+      }
+    //Intentionally omitting break statement
     case actionTypes.CURRENT_PAGE_INDEX:
-      return AudioListener;
+      if (type === actionTypes.CURRENT_PAGE_INDEX) {
+        newState.currentPageIndex = payload.currentPageIndex;
+      }
+    //Intentionally omitting break statement
+    default:
+      return calculateDependentStateVariables(newState);
   }
 }
 

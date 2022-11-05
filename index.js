@@ -11,29 +11,38 @@ export default function usePagination(
   initialItemsPerPage = 0,
   initialCurrentPageIndex = null
 ) {
-  const initialState = { ...defaultInitialState };
+  const [pagination, dispatch] = useReducer(
+    paginationReducer,
+    defaultInitialState
+  );
 
-  if (
-    initialTotalNumberOfItems > 0 &&
-    Number.isSafeInteger(initialTotalNumberOfItems)
-  ) {
-    initialState.totalNumberOfItems = initialTotalNumberOfItems;
-    initialState.itemsPerPage = 1;
-    initialState.currentPageIndex = 1;
-    if (initialItemsPerPage > 1 && Number.isSafeInteger(initialItemsPerPage)) {
-      initialState.itemsPerPage = initialItemsPerPage;
+  useEffect(() => {
+    const initialPayload = {};
+    if (
+      initialTotalNumberOfItems > 0 &&
+      Number.isSafeInteger(initialTotalNumberOfItems)
+    ) {
+      initialPayload.totalNumberOfItems = initialTotalNumberOfItems;
+      initialPayload.itemsPerPage = 1;
+      initialPayload.currentPageIndex = 1;
       if (
-        initialCurrentPageIndex > 1 &&
-        Number.isSafeInteger(initialCurrentPageIndex) &&
-        (initialCurrentPageIndex - 1) * initialItemsPerPage <
-          initialTotalNumberOfItems
+        initialItemsPerPage > 1 &&
+        Number.isSafeInteger(initialItemsPerPage)
       ) {
-        initialState.currentPageIndex = 1;
-        console.log("Again and Again");
+        initialPayload.itemsPerPage = initialItemsPerPage;
+        if (
+          initialCurrentPageIndex > 1 &&
+          Number.isSafeInteger(initialCurrentPageIndex) &&
+          (initialCurrentPageIndex - 1) * initialItemsPerPage <
+            initialTotalNumberOfItems
+        ) {
+          initialPayload.currentPageIndex = 1;
+        }
       }
+      calculateDependentStateVariables(initialState);
+      dispatch(actionCreators.initialize(initialPayload));
     }
-    calculateDependentStateVariables(initialState);
-  }
+  }, []);
 
   useEffect(() => {
     console.info(
@@ -47,8 +56,6 @@ export default function usePagination(
       initialState.currentPageIndex
     );
   }, [totalNumberOfItems, itemsPerPage]);
-
-  const [pagination, dispatch] = useReducer(paginationReducer, initialState);
 
   const {
     totalNumberOfItems,

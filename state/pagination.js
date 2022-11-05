@@ -1,10 +1,19 @@
 const actionTypes = {
+  INIT: "Initialize",
   TOTAL_NUMBER_OF_ITEMS: "Total Changed",
   ITEMS_PER_PAGE: "Items per Page Changed",
   CURRENT_PAGE_INDEX: "Current Page Index Changed",
 };
 
 export const actionCreators = {
+  initialize: (initialState) => {
+    return {
+      type: actionTypes.INIT,
+      payload: {
+        initialState: initialState,
+      },
+    };
+  },
   totalNumberOfItems: (total) => {
     return {
       type: actionTypes.TOTAL_NUMBER_OF_ITEMS,
@@ -49,6 +58,8 @@ export function paginationReducer(state, action) {
   const { type, payload } = action;
   const newState = { ...state };
   switch (type) {
+    case actionTypes.INIT:
+      return calculateDependentStateVariables(payload.initialState);
     case actionTypes.TOTAL_NUMBER_OF_ITEMS:
       if (payload.totalNumberOfItems === 0) {
         return defaultInitialState;

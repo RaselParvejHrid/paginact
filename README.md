@@ -45,28 +45,43 @@ function App() {
 ```javascript
   usePagination(
   initialTotalNumberOfItems = 0,
-  initialItemsPerPage,
-  initialCurrentPageIndex
+  initialItemsPerPage = 0,
+  initialCurrentPageIndex = null
 )
 ```
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `api_key` | `string` | **Required**. Your API key |
+| `initialTotalNumberOfItems` | `number` |  Must be a non-negative integer|
+| `initialItemsPerPage` | `number` |  Must be a non-negative integer|
+| `initialCurrentPageIndex` | `number` |  Must be a positive integer or `null` by default|
 
-#### Get item
+This hook returns an object. In the [Usage](#usage) section above is the comprehensive list of the keys of the object. 
 
-```http
-  GET /api/items/${id}
+
+
+#### The case when `totalNumberOfItems` is `0`
+Either through `initialTotalNumberOfItems` parameter in `usePagination()` hook, or through `setTotalNumberOfItems`, whenever `totalNumberOfItems` is `0`, here is what we get—
+
+```javascript
+{
+  totalNumberOfItems: 0,
+  itemsPerPage: 0,
+  numberOfPages: 0,
+  firstPageIndex: null,
+  lastPageIndex: null,
+  currentPageIndex: null,
+  offset: 0,
+  startItemIndexOnCurrentPage: null,
+  endItemIndexOnCurrentPage: null,
+  previousPageIndex: null,
+  nextPageIndex: null,
+}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `string` | **Required**. Id of item to fetch |
 
-#### add(num1, num2)
 
-Takes two numbers and returns the sum.
+
 ## FAQ
 
 #### Can I use it in React Native?

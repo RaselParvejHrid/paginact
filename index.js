@@ -55,7 +55,7 @@ export default function usePagination(
       "currentPageIndex: ",
       initialState.currentPageIndex
     );
-  }, [totalNumberOfItems, itemsPerPage]);
+  }, [pagination.totalNumberOfItems, pagination.itemsPerPage]);
 
   const {
     totalNumberOfItems,

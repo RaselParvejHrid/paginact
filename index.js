@@ -39,7 +39,6 @@ export default function usePagination(
           initialPayload.currentPageIndex = 1;
         }
       }
-      calculateDependentStateVariables(initialState);
       dispatch(actionCreators.initialize(initialPayload));
     }
   }, []);

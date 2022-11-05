@@ -2,6 +2,7 @@
   "name": "paginact",
   "version": "1.0.0",
   "description": "A React Hook for Pagination",
+  "keywords": ["react", "react native", "pagination"],
   "type": "module",
   "main": "index.js",
   "scripts": {

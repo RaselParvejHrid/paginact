@@ -1,8 +1,8 @@
 import { useEffect, useReducer } from "react";
+
 import {
   paginationReducer,
   defaultInitialState,
-  calculateDependentStateVariables,
   actionCreators,
 } from "./state/pagination.js";
 

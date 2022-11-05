@@ -35,7 +35,7 @@ export default function usePagination(
 
     console.info(
       "@tarui/paginact",
-      "Initial State set",
+      "Initialializing Pagination State",
       "totalNumberOfItems: ",
       initialState.totalNumberOfItems,
       "itemsPerPage: ",
@@ -45,7 +45,7 @@ export default function usePagination(
     );
   }
 
-  const [pagination, dispatch] = useReducer(paginationReducer);
+  const [pagination, dispatch] = useReducer(paginationReducer, initialState);
 
   const {
     totalNumberOfItems,

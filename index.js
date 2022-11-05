@@ -8,8 +8,8 @@ import {
 
 export default function usePagination(
   initialTotalNumberOfItems = 0,
-  initialItemsPerPage = 0,
-  initialCurrentPageIndex = null
+  initialItemsPerPage,
+  initialCurrentPageIndex
 ) {
   const [pagination, dispatch] = useReducer(
     paginationReducer,

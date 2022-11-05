@@ -47,6 +47,20 @@ export default function usePagination(
 
   const [pagination, dispatch] = useReducer(paginationReducer);
 
+  const {
+    totalNumberOfItems,
+    itemsPerPage,
+    numberOfPages,
+    firstPageIndex,
+    lastPageIndex,
+    currentPageIndex,
+    offset,
+    startItemIndexOnCurrentPage,
+    endItemIndexOnCurrentPage,
+    previousPageIndex,
+    nextPageIndex,
+  } = pagination;
+
   const setTotalNumberOfItems = (total) => {
     if (total >= 0 && Number.isSafeInteger(total)) {
       dispatch(actionCreators.totalNumberOfItems(total));
@@ -77,7 +91,17 @@ export default function usePagination(
     }
   };
   return {
-    ...pagination,
+    totalNumberOfItems,
+    itemsPerPage,
+    numberOfPages,
+    firstPageIndex,
+    lastPageIndex,
+    currentPageIndex,
+    offset,
+    startItemIndexOnCurrentPage,
+    endItemIndexOnCurrentPage,
+    previousPageIndex,
+    nextPageIndex,
     setTotalNumberOfItems,
     setItemsPerPage,
     setCurrentPageIndex,

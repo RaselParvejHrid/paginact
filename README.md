@@ -41,7 +41,7 @@ import usePagination from "paginact";
 
 ## Example
 
-I used this ugly [paginact-test](https://github.com/RaselParvejABC/paginact-test) project (bootstrapped by create-react-app) to test **Paginact**.
+I used this ugly [paginact-test](https://codesandbox.io/s/paginact-test-ywfd0g) project (bootstrapped by create-react-app) to test **Paginact**.
 
 You may want to look at `src/App.js` of the project (shown below).
 

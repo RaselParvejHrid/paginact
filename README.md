@@ -39,6 +39,72 @@ import usePagination from "paginact";
 **Note**:  Both `Page Indices` and `Item Indices` here `start from  1`, not 0.
 
 
+## Example
+
+I used this ugly [paginact-test](https://github.com/RaselParvejABC/paginact-test) project (bootstrapped by create-react-app) to test **Paginact**.
+
+You may want to look at `src/App.js` of the project (shown below).
+
+```javascript
+
+import usePagination from "paginact";
+
+function App() {
+  const {
+    totalNumberOfItems,
+    itemsPerPage,
+    numberOfPages,
+    firstPageIndex,
+    lastPageIndex,
+    currentPageIndex,
+    offset,
+    startItemIndexOnCurrentPage,
+    endItemIndexOnCurrentPage,
+    previousPageIndex,
+    nextPageIndex,
+    setTotalNumberOfItems,
+    setItemsPerPage,
+    setCurrentPageIndex,
+  } = usePagination(97, 10, 1);
+  return (
+    <>
+      <label>Total</label>
+      <input
+        type="number"
+        onChange={(event) =>
+          setTotalNumberOfItems(parseInt(event.target.value))
+        }
+      />
+      <label>Items Per Page</label>
+      <input
+        type="number"
+        onChange={(event) => setItemsPerPage(parseInt(event.target.value))}
+      />
+      <label>Current Page</label>
+      <input
+        type="number"
+        onChange={(event) => setCurrentPageIndex(parseInt(event.target.value))}
+      />
+      <div>
+        Items: {startItemIndexOnCurrentPage}-{endItemIndexOnCurrentPage}
+      </div>
+      <div>current page: {currentPageIndex}</div>
+      <div>offset: {offset}</div>
+      <div>first page: {firstPageIndex}</div>
+      <div>last page: {lastPageIndex}</div>
+      <div>previous page: {previousPageIndex}</div>
+      <div>next page: {nextPageIndex}</div>
+      <div>total page: {numberOfPages}</div>
+      <div>items per page: {itemsPerPage}</div>
+      <div>total item: {totalNumberOfItems}</div>
+    </>
+  );
+}
+
+export default App;
+
+``` 
+
 ## API Reference
 
 ### usePagination()
@@ -99,7 +165,7 @@ Either through `initialTotalNumberOfItems` parameter of `usePagination()` hook, 
 | `lastPageIndex` | `number` or `null` |  Equal to `numberOfPages`,  or `null` only when `totalNumberOfItems` is `0`.|
 | `offset` | `number` |  A non-negative integer. This is the total number of items under the pages before the current page (`currentPageIndex`).|
 | `startItemIndexOnCurrentPage` | `number` or `null` |  A positive integer,  or `null` when `totalNumberOfItems` is `0`.|
-| `endItemIndexOnCurrentPage` | `number` or `null`|  A positive integer,  or `null` when `totalNumberOfItems` is `0`.|
+| `endItemIndexOnCurrentPage` | `number` or `null`|  A positive integer,  or `null` when `totalNumberOfItems` is `0`. When there is only one item on a page, this is equal to `startItemIndexOnCurrentPage`. When building UI, you might want to consider this case of equality.|
 | `previousPageIndex` | `number` or `null`|  A positive integer, or `null` there is no previous page.|
 | `nextPageIndex` | `number` or `null` |  A positive integer, or `null` there is no next page.|
 

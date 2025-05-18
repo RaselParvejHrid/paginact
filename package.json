@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RaselParvejABC/paginact.git"
+    "url": "git+https://github.com/RaselParvejHrid/paginact.git"
   },
-  "author": "Muhammad Rasel Parvej",
+  "author": "Rasel Parvej",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/RaselParvejABC/paginact/issues"
+    "url": "https://github.com/RaselParvejHrid/paginact/issues"
   },
-  "homepage": "https://github.com/RaselParvejABC/paginact#readme",
+  "homepage": "https://github.com/RaselParvejHrid/paginact#readme",
   "peerDependencies": {
     "react": ">=16.8.0"
   },
